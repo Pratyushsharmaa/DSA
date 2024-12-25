@@ -1,0 +1,53 @@
+//Sort 0s, 1s and 2s.
+//Temporary arrays approach.
+
+#include<iostream>
+using namespace std;
+
+void dutchNationalFlag(int arr[], int size);
+
+int main(){
+    int arr[] = {1,0,2,1,0,2,1,0};
+    int size = 8;
+    dutchNationalFlag(arr,size);
+    for(int i=0;i<size;i++){
+        cout<<arr[i]<<endl;
+    }
+
+}
+
+void dutchNationalFlag(int arr[], int size){
+    int temp0[10] = {0};
+    int temp0Index = 0;
+    int temp1[10] = {0};
+    int temp1Index = 0;
+    int temp2[10] = {0};
+    int temp2Index = 0;
+
+    for(int i=0;i<size;i++){
+        if(arr[i]==0){
+            temp0[temp0Index++] = arr[i];
+            
+        }
+        else if(arr[i]==1){
+            temp1[temp1Index++] = arr[i];
+            
+        }
+        else if(arr[i]==2){
+            temp2[temp2Index++] = arr[i];
+            
+        }
+    }
+    //Combine the arrays back into arr[i]
+        int index = 0;
+        for(int i=0;i<temp0Index;i++){ //iterate until temp0 finishes,i.e, until 0s are stored
+            arr[index++] = temp0[i];
+        }
+        for(int i=0;i<temp1Index;i++){ //iterate until temp1 finishes,i.e, until 1s are stored
+            arr[index++] = temp1[i];
+        }
+        for(int i=0;i<temp2Index;i++){ //iterate until temp2 finishes,i.e, until 2s are stored
+            arr[index++] = temp2[i];
+        }
+
+}

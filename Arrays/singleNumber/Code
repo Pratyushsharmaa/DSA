@@ -1,0 +1,27 @@
+//Given array, where every number comes twice except any one number that comes only once.
+//Use of XOR
+
+#include<iostream>>
+using namespace std;
+
+int singleNumber(int arr[], int size);
+
+int main(){
+    int arr[] = {2,4,4,1,1};
+    int size = 5;
+    int ans = singleNumber(arr,size);
+    cout<<ans<<endl;
+    return 0;
+}
+
+
+int singleNumber(int arr[], int size){
+    int ans = 0;
+    //int size = nums.size();
+    for(int i =0; i<size; i++){
+        ans = ans ^ arr[i]; //XOR
+
+    }
+    return ans;
+    return 0;
+}

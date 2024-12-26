@@ -1,0 +1,37 @@
+#include<iostream>
+using namespace std;
+
+void rotateArray(int arr[], int size, int shift);
+
+int main(){
+    int arr[] = {10,20,30,40,50};
+    int size = 5;
+    int shift = 2;
+    rotateArray(arr,size,shift);
+    for(int i=0; i<size;i++){
+    cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+}
+
+void rotateArray(int arr[], int size, int shift){
+    shift = shift%size; //to handle cases where shift>size
+    int temp[shift];
+    //store last shift elements in temp
+    for(int i=0; i<shift;i++){
+        temp[i] = arr[size-shift+i];
+    }
+    //shift rest elements to right
+    for(int i=size-1; i>=shift;i--){
+        arr[i] = arr[i-shift];
+    }
+
+    //copy elements from temp to start of array
+    for(int i=0; i<shift;i++){
+        arr[i] = temp[i];
+    }
+    
+        
+    
+
+}

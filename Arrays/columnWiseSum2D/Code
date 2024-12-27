@@ -1,0 +1,30 @@
+#include<iostream>
+using namespace std;
+
+int colSum(int arr[][3], int rowSize, int colSize);
+
+int main(){
+    int arr[3][3] = { {10,20,30},
+                        {40,50,60},
+                        {70,80,90}
+                    };
+
+    int rowSize = 3;
+    int colSize = 3;
+    cout<<"The sum of each column is: "<<endl;
+    colSum(arr,rowSize,colSize);
+    
+    return 0;
+}
+
+int colSum(int arr[][3], int rowSize, int colSize){
+    for(int i=0; i<colSize; i++){
+        int sum = 0;
+        for(int j=0; j<rowSize; j++){
+            
+            sum += arr[j][i];
+            
+        }
+        cout<<sum<<endl;
+    }
+}

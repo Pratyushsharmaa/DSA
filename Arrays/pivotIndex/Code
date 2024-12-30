@@ -1,0 +1,34 @@
+#include<iostream>
+using namespace std;
+
+int pivotIndex(int arr[], int size);
+
+int main(){
+    int arr[] = {3,7,3,4,6,5};
+    int size = 6;
+    int ans = pivotIndex(arr,size);
+    cout<<"Pivot index is: ";
+    //for(int i=0; i<size;i++){       // no need of loop because pivot index is single value. It will print indices multiple times.
+        cout<<ans<<endl;
+    
+
+    return 0;
+}
+
+int pivotIndex(int arr[], int size){
+    for(int i=0; i<size;i++){
+        int leftSum = 0;
+        int rightSum = 0;
+        for(int j=0; j<i;j++){
+            leftSum += arr[j];
+        }
+        for(int j=i+1; j<size; j++){
+            rightSum += arr[j];
+        }
+        if(leftSum==rightSum){
+            return i;
+        }
+        
+    }
+        return -1;
+}

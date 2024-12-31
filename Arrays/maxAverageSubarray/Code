@@ -1,0 +1,32 @@
+//find the subarray of a given size k with the maximum average in an array
+//TC = O(n), n is size of array.
+
+#include<iostream>
+using namespace std;
+
+double maxAverage(int arr[], int size, int k);
+
+int main(){
+    int arr[] = {10,15,-6,5,17,-9,8};
+    int size = 7;
+    int k = 4;
+    cout<<"Max average is:"<<" ";
+    double result = maxAverage(arr,size,k);
+    cout<<result<<endl;
+    return 0;
+
+}
+
+double maxAverage(int arr[], int size, int k){
+    double maxSum, currentSum = 0;
+    for(int i=0; i<k;i++){
+        currentSum += arr[i];
+    }
+    maxSum = currentSum;
+
+    for(int i = k; i<size; i++){
+        currentSum +=arr[i] - arr[i-k]; //remove old element from sliding window
+        maxSum = max(maxSum,currentSum);
+    }
+    return maxSum/k; // max average
+}

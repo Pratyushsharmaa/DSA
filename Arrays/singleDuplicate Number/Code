@@ -1,0 +1,28 @@
+//Find one duplicate number.
+//TC = O(n^2) because outer loop runs n times. Inner loop runs n-i-1 times. So total = n(n-1)/2 which gives n^2.
+
+#include<iostream>
+using namespace std;
+
+int findDuplicate(int arr[], int size);
+
+int main(){
+    int arr[] = {8,2,3,4,8,1,5};
+    int size = 7;
+    cout<<"The duplicate number is: "<<" "<<endl;
+    int ans = findDuplicate(arr,size);
+    cout<<ans<<endl;
+
+    return 0;
+}
+
+int findDuplicate(int arr[], int size){
+   
+    for(int i=0;i<size;i++){
+        for(int j=i+1;j<size;j++){
+        if(arr[i]==arr[j]){
+            return arr[i];
+        }
+        }
+    }
+}

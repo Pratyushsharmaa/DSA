@@ -1,0 +1,31 @@
+//Find first repeating element. If multiple repeating elements, print the repeating element with lowest index.
+//Outer loop runs n times. Inner loop runs (n-1),(n-2)...1 times for each element. Total = n(n-1)/2. 
+//TC = O(n^2)
+
+#include<iostream>
+using namespace std;
+
+int findRepeat(int arr[], int size);
+
+int main(){
+    int arr[] = {1,5,2,3,5,3,8,9};
+    int size = 8;
+    cout<<"The first repeating element is: "<<" ";
+    int ans = findRepeat(arr, size);
+    cout<<ans<<endl;
+    
+    return 0;
+}
+
+int findRepeat(int arr[], int size){
+    //int temp[size];
+    //int index=0;
+    for(int i=0; i<size;i++){
+        for(int j=i+1; j<size;j++){
+            if(arr[i]==arr[j]){
+                return arr[i];
+            }
+        }
+    }
+    // return temp[1];
+}

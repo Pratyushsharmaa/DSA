@@ -1,0 +1,44 @@
+
+
+#include<iostream>
+#include<unordered_map>
+using namespace std;
+
+int main(){
+    unordered_map<int,int> table_name_desk;
+    //Insertion
+    table_name_desk[1] = 52;
+    table_name_desk[2] = 53;
+    table_name_desk[3] = 54;
+
+    //Re-assign
+    table_name_desk[2] = 40;
+
+    //Iterate through above entries
+    unordered_map<int,int> :: iterator it;
+    for(it = table_name_desk.begin(); it!=table_name_desk.end();it++){
+        int key = it->first; //first column is keys
+        int value = it->second; //second column is values
+        cout<<"Key: "<<key<<" "<<"Value: "<<value<<" "<<endl;
+    }
+
+    //Find Key 2
+    if(table_name_desk.find(2) != table_name_desk.end()){
+        //if found
+        int value = table_name_desk[2];
+        cout<<value<<endl;
+    }
+    else{
+        cout<<"Not found"<<endl;
+    }
+
+    //Delete a key
+    table_name_desk.erase(3);
+
+    //Check after deletion
+    for(it = table_name_desk.begin(); it!=table_name_desk.end();it++){
+        int key = it->first; //first column is keys
+        int value = it->second; //second column is values
+        cout<<"Key: "<<key<<" "<<"Value: "<<value<<" "<<endl;
+    }
+}

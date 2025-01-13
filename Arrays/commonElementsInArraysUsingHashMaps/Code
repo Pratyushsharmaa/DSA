@@ -1,0 +1,49 @@
+//Find common elements across multiple arrays using hash maps. TC = O(n).
+
+#include<iostream>
+#include<unordered_set>
+using namespace std;
+
+void commonElements(int arr1[], int size1, int arr2[], int size2, int arr3[],int size3);
+
+int main(){
+    int arr1[] = {1,2,3,4,5};
+    int size1 = 5;
+    int arr2[] = {2,4,6,7,8};
+    int size2 = 5;
+    int arr3[] = {2,4,8,9,10};
+    int size3 = 5;
+    commonElements(arr1, size1, arr2, size2, arr3, size3);
+    return 0;
+
+}
+
+void commonElements(int arr1[], int size1, int arr2[], int size2, int arr3[],int size3){
+    unordered_set<int> set1;
+    unordered_set<int> set2;
+    bool found = false;
+    //Insert elements of arr1 in set1
+    for(int i=0; i<size1; i++){
+        set1.insert(arr1[i]);
+        
+    }
+   
+    //Traverse elements in arr2 and find common elements
+    for(int i=0; i<size2; i++){
+    if(set1.find(arr2[i]) != set1.end()){
+            set2.insert(arr2[i]);
+        }
+    }
+   
+
+    //Traverse elements in arr3 and find common elements 
+    for(int i=0; i<size3; i++){
+        if(set2.find(arr3[i]) != set2.end()){
+            cout<< arr3[i]<< " ";
+            found = true;
+        }
+    }
+    if(!found){
+        cout<<"No common elements found!"<<endl;
+    }
+}

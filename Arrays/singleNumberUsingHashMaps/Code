@@ -1,0 +1,34 @@
+#include<iostream>
+#include<unordered_map>
+#include<vector>
+using namespace std;
+
+int singleNumber(vector<int>&nums){
+    //frequency table construct
+    unordered_map<int,int>freqmap;
+
+    //add frequency
+    for(int i=0; i<nums.size();i++){
+        int num = nums[i];
+        freqmap[num] = freqmap[num]+1;
+    }
+
+    unordered_map<int, int> :: iterator it;
+    int ans;
+    for(it=freqmap.begin();it!=freqmap.end(); it++){
+        int key = it->first;
+        int frequency = it->second;
+        if(frequency==1){
+            ans=key;
+            break;
+
+        }
+    }
+    return ans;
+}
+
+int main(){
+     vector<int> nums = {4, 1, 2, 1, 2};
+     cout << "The single number is: " << singleNumber(nums) << endl;
+     return 0;
+}

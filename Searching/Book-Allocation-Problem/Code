@@ -1,0 +1,57 @@
+//TC = O(n log(no. of pages))
+
+#include<iostream>
+#include <algorithm>
+using namespace std;
+
+int bookAllocation(int arr[], int n, int m){
+    if(m>n) return -1; //not enough books
+
+    int low = 0;
+    int high = n-1;
+    int result = high;
+
+    while(low<=high){
+        int mid = low + (high-low)/2;
+        int count = 1;
+        int page_sum = 0;
+        bool isPossible = true;
+
+        for(int i=0; i<n; i++){
+            if(page_sum+arr[i]>mid){
+                count++;
+                page_sum = arr[i];
+            
+            if(count>m){
+                isPossible = false; //cannot allocate more
+                break;
+            }
+        }
+        else{
+            page_sum += arr[i];
+        }
+        }
+        if(isPossible){
+            result = mid; //Try to minimize pages
+            high = mid-1;
+        }
+        else{
+            low = mid+1;
+        }
+    }
+    return result;
+}
+
+int main(){
+    int arr[] = {12,34,67,90};
+    int n = 4;
+    int m = 2;
+    int result = bookAllocation(arr,n,m);
+    if (result != -1) {
+        cout << "Minimum of the maximum pages: " << result << endl;
+    } else {
+        cout << "Not enough books for each student!" << endl;
+    }
+
+    return 0;
+}
